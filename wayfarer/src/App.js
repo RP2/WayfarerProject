@@ -5,6 +5,7 @@ import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import Profile from './components/Profile';
 import Browse from './components/Browse/Browse';
+import CreatePost from './components/Browse/CreatePost';
 
 class App extends Component {
   render() {
@@ -29,6 +30,7 @@ class App extends Component {
             <Route path="/profile" component={Profile} />
             <Route path="/browse" component={Browse} />
             <Route exact path="/" component={Landing} />
+            <Route path="/createpost" component={CreatePost} />
             <Route path="/*" render={() => <div>Error 404</div>}/>
           </Switch>
         </div>
