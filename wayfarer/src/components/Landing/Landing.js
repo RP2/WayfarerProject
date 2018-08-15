@@ -6,7 +6,7 @@ class Landing extends Component {
         return (
             <div className="Landing">
             <h2>Landing</h2>
-            <div>
+            <div className="Carousel">
                 {/* Carousel */}
             </div>
                 <About />
