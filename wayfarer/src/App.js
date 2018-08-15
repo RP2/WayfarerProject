@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
-import Landing from './components/Landing';
-import Login from './components/Login';
-import Signup from './components/Signup';
+import Landing from './components/Landing/Landing';
+import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup';
 import Profile from './components/Profile';
-import Browse from './components/Browse';
+import Browse from './components/Browse/Browse';
 
 class App extends Component {
   render() {
