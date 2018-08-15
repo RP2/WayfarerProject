@@ -12,6 +12,7 @@ class App extends Component {
       <div>
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
           <div className="collapese navbar-collapse" id="navigation">
+          <h1>Wayfarer</h1>
             <ul className="navbar-nav ml-auto">
               <li className="nav-item"><NavLink className="nav-link" exact to="/">Home</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/login">Login</NavLink></li>
