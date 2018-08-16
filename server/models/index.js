@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/user");
 
-let player = require("./player.js");
+let post = require("./post.js");
 let user = require("./user.js");
 
 module.exports = {
-  player: player,
+  post: post,
   user: user
 };

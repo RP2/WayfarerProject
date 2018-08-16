@@ -1,7 +1,7 @@
 // user schema
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-let Player = require("./player.js");
+let Post = require("./post.js");
 
 let userSchema = new Schema({
   name: String,
@@ -12,7 +12,7 @@ let userSchema = new Schema({
   img: String,
   posts: [
     {
-      ref: "Post",
+      ref: Post,
       type: mongoose.Schema.Types.ObjectId
     }
   ]
