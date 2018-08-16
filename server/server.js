@@ -15,10 +15,11 @@ const controllers = require("./controllers");
 //login or create account/post routes
 app.post("/api/user/login", controllers.user.login);
 app.post("/api/user/signup", controllers.user.signup);
-// app.post("/api/user/:user_id/post", controllers.user.create);
+// app.post("/api/user/:user_id/post", controllers.post.create);
 
 app.get("/api/user", controllers.user.index);
-// app.get("/api/user/:user_id/:post_id", contollers.user.index);
+app.get("/api/user/:user_id", controllers.user.profile);
+// app.get("/api/user/:user_id/:post_id", contollers.post.index)
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
 app.listen(process.env.PORT || 4000, () => {

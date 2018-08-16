@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom';
 
 class CreatePost extends Component {
+
+    onSubmit = (event) => {
+        event.preventDefault();
+        this.props.history.push("/browse")
+    }
+
     render() {
         return (
             <div className="CreatePost">
             <h2>CreatePost</h2>
-            <form>
+            <form onSubmit={this.onSubmit}>
                 <select name="City">
                     <option value="SanFrancisco">San Francisco</option>
                     <option value="London">London</option>

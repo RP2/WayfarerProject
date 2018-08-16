@@ -8,7 +8,6 @@ export default class UserModel  {
       })
           .then(function (response) {
               console.log(response);
-            //   res.redirect(response);
               return res.json(response);
           })
           .catch(function (error) {
