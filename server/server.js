@@ -1,6 +1,6 @@
-import express from "express";
+const express = require("express");
 const app = express();
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -23,7 +23,7 @@ app.get("/api", (req, res) => {
   res.send();
 });
 //login or create account/post routes
-app.post('/api/user/login', controllers.user.login);
+app.post("/api/user/login", controllers.user.login);
 app.post("/api/user/signup", controllers.user.signup);
 app.post("/api/user/:user_id/post", controllers.user.post.create);
 
