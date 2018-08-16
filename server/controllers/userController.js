@@ -1,6 +1,6 @@
 const db = require("../models");
 
-// GET /api/users
+// GET /api/user
 function index(res) {
     // access database and pull out all users
     db.User.find({}, function(err, allUsers) {
@@ -21,7 +21,7 @@ function index(res) {
     })
   }
   
-  // POST /api/users
+  // POST /api/user
   function signup(req, res) {
     // create a user based on request body and send it back as JSON
     db.User.signup(req.body, function(err, user) {
