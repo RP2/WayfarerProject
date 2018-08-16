@@ -7,26 +7,21 @@ class Login extends Component {
     this.props.history.push("/profile");
   };
 
-  state = {
-    username: "",
-    password: ""
-  };
-
-  onInputChange = event => {
-    this.setState({
-      username: event.target.value,
-      password: event.target.value
-    });
-  };
-
   onSubmit = event => {
+    console.log(
+      "in submit",
+      this.refs.username.value,
+      this.refs.password.value
+    );
     event.preventDefault();
-    Model.login(this.state.username, this.state.password).then((req, res) => {
-      this.setState({
-        responce: res.data,
-        auth: true
-      });
-    });
+    Model.login(this.refs.username.value, this.refs.password.value).then(
+      res => {
+        console.log("res", res.data);
+        if (res.status === 404) {
+          console.log("request failed");
+        }
+      }
+    );
     this.props.history.push("/profile");
   };
 
@@ -35,18 +30,8 @@ class Login extends Component {
       <div className="Login">
         <h2>Login</h2>
         <form onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            value={this.state.username}
-            onChange={this.onInputChange}
-            placeholder="Username"
-          />
-          <input
-            type="text"
-            value={this.state.password}
-            onChange={this.onInputChange}
-            placeholder="Password"
-          />
+          <input type="text" ref="username" placeholder="Username" />
+          <input type="text" ref="password" placeholder="Password" />
           <input type="submit" value="Submit" />
         </form>
       </div>

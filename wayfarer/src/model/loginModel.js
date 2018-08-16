@@ -1,9 +1,14 @@
 import axios from 'axios'
 
 class loginModel {
-  static login(){
-    let request = axios.post(`http://localhost:4000/api/user/login`)
-    return request
+  static login(username, password){
+    let request = axios.post(`http://localhost:4000/api/user/login`,
+      {
+        username:username,
+        password:password,
+      }
+    )
+    return request;
   }
 }
 

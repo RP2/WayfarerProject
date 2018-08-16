@@ -1,8 +1,14 @@
 import axios from 'axios'
 
 class signupModel {
-    static signup(){
-      let request = axios.post(`http://localhost:4000/api/user/signup`)
+    static signup(username, password){
+        console.log('signup', username, password)
+        let request = axios.post(`http://localhost:4000/api/user/signup`,
+            {
+            username:username,
+            password:password,
+            }
+        )
       return request
     }
   }
