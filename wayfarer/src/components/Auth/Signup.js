@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import Model from "../../model/signupModel";
 
 class Signup extends Component {
+  state = {
+    newUser: ""
+  };
 
     onSubmit = (event) => {
         event.preventDefault();

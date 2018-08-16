@@ -47,8 +47,8 @@ function index(req, res) {
   }
 
 module.exports = {
-    index: index,
-    login: login,
-    signup: signup,
-    profile: profile,
+  index: index,
+  login: login,
+  signup: signup,
+  profile: profile
 };

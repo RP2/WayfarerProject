@@ -2,7 +2,7 @@
 const cors = require('cors');
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 
 app.use(cors());
 
@@ -11,12 +11,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Require the models directory in server.js
-const db = require('./models');
-const controllers = require('./controllers');
+const db = require("./models");
+const controllers = require("./controllers");
 
 // ########################### ROUTES ###############################
 //login or create account/post routes
-app.post('/api/user/login', controllers.user.login);
+app.post("/api/user/login", controllers.user.login);
 app.post("/api/user/signup", controllers.user.signup);
 // app.post("/api/user/:user_id/post", controllers.post.create);
 
