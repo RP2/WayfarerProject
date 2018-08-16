@@ -1,11 +1,7 @@
-import express from "express";
-import request from "request";
-
-const router = express.Router();
 const db = require("../models");
 
 // GET /api/users
-function index(req, res) {
+function index(res) {
   // access database and pull out all users
   db.User.find({}, function(err, allUsers) {
     if (err) {
@@ -14,7 +10,6 @@ function index(req, res) {
     res.json(allUsers);
   });
 }
-
 //login function
 function login(req, res) {
   console.log(req.body);
