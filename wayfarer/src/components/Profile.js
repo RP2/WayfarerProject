@@ -1,9 +1,13 @@
 import React, { Component } from "react";
+import UserModel from "../models/userModel";
+import { join } from "path";
 
 class Profile extends Component {
   state = {
     isEditing: false,
-    username: "Brady",
+    username: "",
+    city: "",
+    join_date: "",
     profile_pic: "http://picsum.photos/200"
   };
 
@@ -12,11 +16,29 @@ class Profile extends Component {
     this.setState({ isEditing: !this.state.isEditing });
   };
 
-  //   componentDidMount() {
-  //       Model.getOne()
-  //         .then(response => console.log(response))
-  //         this.setState({ username: response.username })
-  //   }
+  //   saveProfile = event => {
+  //     event.preventDefault();
+  //     this.setState({
+  //       isEditing: false,
+  //       username: ,
+  //       city: ,
+  //       join_date: ,
+  //       profile_pic: "#"
+  //     });
+  //   };
+
+  componentDidMount() {
+    UserModel.getOne({ username: this.state.username }).then(response => {
+      console.log(response);
+      this.setState({
+        username: response.username,
+        profile_pic: response.profile_pic,
+        isEditing: response.isEditing,
+        city: response.city,
+        join_date: response.join_date
+      });
+    });
+  }
 
   render() {
     return (
@@ -25,17 +47,28 @@ class Profile extends Component {
         <button onClick={this.editProfile}>Edit</button>
         <img src="" alt="user-pic" />
         <div className="AboutUser">
-          <img src={this.state.profile_pic} />
+          <img src={this.state.profile_pic} alt="#" />
           <ul>
             <li>Username:</li>
             {this.state.isEditing ? (
-              <input type="text" name="username" />
+              <input id="username" type="text" name="username" />
             ) : (
               <p>{this.state.username}</p>
             )}
             <li>City:</li>
+            {this.state.isEditing ? (
+              <input id="city" type="text" name="city" />
+            ) : (
+              <p>{this.state.city}</p>
+            )}
             <li>Join Date:</li>
+            {this.state.isEditing ? (
+              <input id="join_date" type="text" name="join-date" />
+            ) : (
+              <p>{this.state.join_date}</p>
+            )}
           </ul>
+          <button onSubmit={this.saveProfile}>Save</button>
         </div>
         <div className="UserPosts" />
       </div>
