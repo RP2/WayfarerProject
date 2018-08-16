@@ -18,6 +18,7 @@ app.post("/api/user/signup", controllers.user.signup);
 // app.post("/api/user/:user_id/post", controllers.post.create);
 
 app.get("/api/user", controllers.user.index);
+app.get("/api/user/:user_id", controllers.user.profile);
 // app.get("/api/user/:user_id/:post_id", contollers.post.index)
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
