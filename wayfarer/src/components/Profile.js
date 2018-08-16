@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import UserModel from "../models/userModel";
-import { join } from "path";
+import UserModel from "../model/userModel";
 
 class Profile extends Component {
   state = {
