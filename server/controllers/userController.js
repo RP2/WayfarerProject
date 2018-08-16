@@ -10,22 +10,32 @@ function index(req, res) {
   }
   //login function
   function login(req,res) {
-    console.log(req.body)
-    db.User.findOne({username: req.body.username}, function(err, foundUser){
-      if (err) { console.log('error', err); }
-      if (foundUser){
-        if (foundUser.password === req.body.password){
-          res.json(foundUser);
-        } else {res.status(400)}
+    console.log('req.body', req.body)
+    db.User.findOne({username: req.body.username, password:req.body.password}, function(err, foundUser){
+      
+      if (err) { 
+        return err;
+        console.log('error', err); 
       }
+      if (foundUser){
+        console.log('in if', foundUser);
+        // if (foundUser.password === req.body.password){
+          res.status(200).json(foundUser);
+      }
+      else {
+        console.log('in else');
+        res.status(404).send('not found')
+    }
+      
     })
   }
   // POST /api/user
   function signup(req, res) {
+    console.log('signup req.body', req.body)
     // create a user based on request body and send it back as JSON
-    db.User.signup(req.body, function(err, user) {
+    db.User.create(req.body, function(err, user) {
       if (err) { console.log('error', err); }
-      res.json(user);
+      res.status(200).json(user);
     });
   }
   // user profile
