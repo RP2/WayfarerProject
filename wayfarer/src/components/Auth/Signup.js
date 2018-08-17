@@ -11,7 +11,7 @@ class Signup extends Component {
                 if(res.status===404){
                     console.log('request failed')
                 }
-                this.props.setAuth();
+                this.props.setAuth(res.data.username);
             });
             this.props.history.push("/profile")
         } else {

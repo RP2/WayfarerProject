@@ -6,7 +6,7 @@ let Post = require("./post.js");
 let userSchema = new Schema({
   name: String,
   city: String,
-  joinDate: Date,
+  joinDate: {type: Date, default: Date.now},
   username: String,
   password: String,
   img: String,

@@ -12,9 +12,10 @@ class Login extends Component {
             if(res.status===404){
                 console.log('request failed')
             }
-            this.props.setAuth();
+            localStorage.setItem("username", res.data.username);
+            this.props.setAuth(res.data.username);
          });
-        this.props.history.push("/profile")
+            this.props.history.push("/profile")
     }
 
     render() {

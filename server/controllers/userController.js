@@ -38,8 +38,16 @@ function index(req, res) {
       res.status(200).json(user);
     });
   }
-  // user profile
+
   function profile(req, res) {
+    db.User.find({username: req.username}, function(err, foundUser){
+      if (err) {console.log(err)}
+      res.status(200).json(foundUser);
+    })
+  }
+
+  // user profile
+  function updateProfile(req, res) {
     db.User.findById(req.params.id, function(err, foundUser) {
       if (err) { console.log('userController.update error', err); }
       foundUser.username = req.body.username;
@@ -56,5 +64,6 @@ module.exports = {
   index: index,
   login: login,
   signup: signup,
-  profile: profile
+  profile: profile,
+  updateProfile: updateProfile,
 };
