@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import Model from "../../model/signupModel";
 
 class Signup extends Component {
-  state = {
-    newUser: ""
-  };
 
     onSubmit = (event) => {
         event.preventDefault();
@@ -14,6 +11,7 @@ class Signup extends Component {
                 if(res.status===404){
                     console.log('request failed')
                 }
+                this.props.setAuth();
             });
             this.props.history.push("/profile")
         } else {
