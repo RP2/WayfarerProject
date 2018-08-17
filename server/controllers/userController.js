@@ -29,36 +29,41 @@ function login(req, res) {
         res.status(404).send("not found");
       }
     }
-      
-    })
-  }
-  // POST /api/user
-  function signup(req, res) {
-    console.log('signup req.body', req.body)
-    // create a user based on request body and send it back as JSON
-    db.User.create(req.body, function(err, user) {
-      if (err) { console.log('error', err); }
-      res.status(200).json(user);
-    });
-  }
+  );
+}
 
-  function profile(req, res) {
-    db.User.find({username: req.username}, function(err, foundUser){
-      if (err) {console.log(err)}
-      res.status(200).json(foundUser);
-    })
-  }
+// POST /api/user
+function signup(req, res) {
+  console.log("signup req.body", req.body);
+  // create a user based on request body and send it back as JSON
+  db.User.create(req.body, function(err, user) {
+    if (err) {
+      console.log("error", err);
+    }
+    res.status(200).json(user);
+  });
+}
 
-  // user profile
-  function updateProfile(req, res) {
-    db.User.findById(req.params.id, function(err, foundUser) {
-      if (err) { console.log('userController.update error', err); }
-      foundUser.username = req.body.username;
-      foundUser.city = req.body.city;
-      foundUser.picture = req.body.picture;
-      foundUser.save(function(err, savedUser){
-        res.status(200).json(savedUser);
-      });
+function profile(req, res) {
+  db.User.find({ username: req.username }, function(err, foundUser) {
+    if (err) {
+      console.log(err);
+    }
+    res.status(200).json(foundUser);
+  });
+}
+
+// user profile
+function updateProfile(req, res) {
+  db.User.findById(req.params.id, function(err, foundUser) {
+    if (err) {
+      console.log("userController.update error", err);
+    }
+    foundUser.username = req.body.username;
+    foundUser.city = req.body.city;
+    foundUser.picture = req.body.picture;
+    foundUser.save(function(err, savedUser) {
+      res.status(200).json(savedUser);
     });
   });
 }
@@ -68,5 +73,5 @@ module.exports = {
   login: login,
   signup: signup,
   profile: profile,
-  updateProfile: updateProfile,
+  updateProfile: updateProfile
 };
