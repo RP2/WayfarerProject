@@ -40,11 +40,17 @@ function index(req, res) {
   }
   // user profile
   function profile(req, res) {
-    db.User.findOne(req.body._id, function(err, foundUser) {
-      if (err) {console.log('error', err);}
-      return res.redirect(foundUser)
-    })
-  }
+    db.User.findById(req.params.id, function(err, foundUser) {
+      if (err) { console.log('userController.update error', err); }
+      foundUser.username = req.body.username;
+      foundUser.city = req.body.city;
+      foundUser.picture = req.body.picture;
+      foundUser.save(function(err, savedUser){
+        res.status(200).json(savedUser);
+      });
+    });
+  };
+  
 
 module.exports = {
   index: index,
