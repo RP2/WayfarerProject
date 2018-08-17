@@ -14,8 +14,8 @@ class Login extends Component {
             }
             localStorage.setItem("username", res.data.username);
             this.props.setAuth(res.data.username);
-         });
             this.props.history.push("/profile")
+         });
     }
 
     render() {

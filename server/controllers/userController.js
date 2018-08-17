@@ -32,15 +32,12 @@ function login(req, res) {
   );
 }
 
-// POST /api/user
-function signup(req, res) {
-  console.log("signup req.body", req.body);
-  // create a user based on request body and send it back as JSON
-  db.User.create(req.body, function(err, user) {
+function profile(req, res) {
+  db.User.findOne({ username: req.params.user_id }, function(err, foundUser) {
     if (err) {
-      console.log("error", err);
+      console.log(err);
     }
-    res.status(200).json(user);
+    res.status(200).json(foundUser);
   });
 }
 

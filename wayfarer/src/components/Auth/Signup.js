@@ -12,8 +12,9 @@ class Signup extends Component {
                     console.log('request failed')
                 }
                 this.props.setAuth(res.data.username);
+                this.props.history.push("/profile");
             });
-            this.props.history.push("/profile")
+            
         } else {
             console.log('passwords do not match');
         }
