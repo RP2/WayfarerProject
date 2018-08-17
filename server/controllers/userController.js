@@ -10,6 +10,7 @@ function index(req, res) {
     res.json(allUsers);
   });
 }
+
 //login function
 function login(req, res) {
   console.log("req.body", req.body);
@@ -22,11 +23,12 @@ function login(req, res) {
       }
       if (foundUser) {
         console.log("in if", foundUser);
-        // if (foundUser.password === req.body.password){
-        res.status(200).json(foundUser);
-      } else {
-        console.log("in else");
-        res.status(404).send("not found");
+        if (foundUser.password === req.body.password) {
+          res.status(200).json(foundUser);
+        } else {
+          console.log("in else");
+          res.status(404).send("not found");
+        }
       }
     }
   );
@@ -41,14 +43,17 @@ function profile(req, res) {
   });
 }
 
-function profile(req, res) {
-  db.User.find({ username: req.username }, function(err, foundUser) {
-    if (err) {
-      console.log(err);
-    }
-    res.status(200).json(foundUser);
-  });
-}
+// function profile(req, res) {
+//   db.User.find({ username: req.username }, function(err, foundUser) {
+//     if (err) {
+//       console.log(err);
+//     }
+//     res.status(200).json(foundUser);
+//   });
+// }
+
+// empty signup function to avoid error
+const signup = (req, res) => {};
 
 // user profile
 function updateProfile(req, res) {
@@ -65,10 +70,20 @@ function updateProfile(req, res) {
   });
 }
 
+function listAll(req, res) {
+  db.User.find({}, function(err, allUsers) {
+    if (err) {
+      console.log(err);
+    }
+    res.json(allUsers);
+  });
+}
+
 module.exports = {
   index: index,
   login: login,
   signup: signup,
   profile: profile,
-  updateProfile: updateProfile
+  updateProfile: updateProfile,
+  listAll: listAll
 };

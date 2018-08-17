@@ -22,6 +22,9 @@ app.get("/api/users", controllers.user.index);
 app.get("/api/users/:user_id", controllers.user.profile);
 // app.get("/api/user/:user_id/:post_id", contollers.post.index)
 
+// endpoint to list all users to use during development, not in production
+app.get("/api/users", controllers.user.listAll);
+
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
 app.listen(process.env.PORT || 4000, () => {
   console.log("Express server is up and running on http://localhost:4000/");
