@@ -11,6 +11,7 @@ class Signup extends Component {
                 if(res.status===404){
                     console.log('request failed')
                 }
+                localStorage.setItem("username", res.data.username);
                 this.props.setAuth(res.data.username);
                 this.props.history.push("/profile");
             });
