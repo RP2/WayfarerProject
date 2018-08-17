@@ -1,28 +1,33 @@
-import React, { Component } from "react";
-import { Switch, Route, NavLink } from "react-router-dom";
-import Landing from "./components/Landing/Landing";
-import Login from "./components/Auth/Login";
-import Signup from "./components/Auth/Signup";
-import Profile from "./components/Profile";
-import Browse from "./components/Browse/Browse";
-import CreatePost from "./components/Browse/CreatePost";
+import React, { Component } from 'react';
+import { Switch, Route, NavLink, withRouter, Redirect } from 'react-router-dom';
+import Landing from './components/Landing/Landing';
+import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup';
+import Profile from './components/Profile';
+import Browse from './components/Browse/Browse';
+import CreatePost from './components/Browse/CreatePost';
 
 class App extends Component {
   state = {
-    auth: false
-  };
+    auth: false,
+    username: null,
+  }
 
-  setAuth = () => {
+  setAuth = (username) => {
     this.setState({
-      auth: true
-    });
-  };
+      auth: true,
+      username: username,
+    })
+    
+    // console.log("App js State = ", this.state);
+  }
 
   logout = () => {
     this.setState({
-      auth: false
-    });
-  };
+      auth: false,
+      username: null,
+    })
+  }
 
   render() {
     return (
@@ -91,11 +96,8 @@ class App extends Component {
               render={props => <Login {...props} setAuth={this.setAuth} />}
             />
             {/* <Route path="/signup" component={Signup} /> */}
-            <Route
-              path="/signup"
-              render={props => <Signup {...props} setAuth={this.setAuth} />}
-            />
-            <Route path="/profile" component={Profile} />
+            <Route path="/signup" render={(props) => <Signup {...props} setAuth={this.setAuth}/>}/>
+            <Route path="/profile" render={(props) => <Profile {...props} setAuth={this.state.auth} username={this.state.username} /> } />
             <Route path="/browse" component={Browse} />
             <Route exact path="/" component={Landing} />
             <Route path="/createpost" component={CreatePost} />
@@ -107,4 +109,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

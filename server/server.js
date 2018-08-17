@@ -14,12 +14,12 @@ const controllers = require("./controllers");
 // ########################### ROUTES ###############################
 
 //login or create account/post routes
-app.post("/api/user/login", controllers.user.login);
-app.post("/api/user/signup", controllers.user.signup);
-// app.post("/api/user/:user_id/post", controllers.post.create);
+app.post("/api/users/login", controllers.user.login);
+app.post("/api/users/signup", controllers.user.signup);
+app.post("/api/users/:user_id", controllers.user.updateProfile);
 
-app.get("/api/user", controllers.user.index);
-app.get("/api/user/:user_id", controllers.user.profile);
+app.get("/api/users", controllers.user.index);
+app.get("/api/users/:user_id", controllers.user.profile);
 // app.get("/api/user/:user_id/:post_id", contollers.post.index)
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000

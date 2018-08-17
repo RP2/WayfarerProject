@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import UserModel from "../model/userModel";
+import Model from "../model/userModel";
 
 class Profile extends Component {
   state = {
@@ -27,12 +27,19 @@ class Profile extends Component {
   // };
 
   componentDidMount() {
-    UserModel.getOne({ username: this.state.username }).then(response => {
-      console.log(response);
+    console.log('component did mount')
+    let username; 
+    if (localStorage.getItem("username") === null) {
+      console.log('reeee')
+    } else {
+      username = localStorage.getItem("username")
+    };
+    
+    Model.profile(username)
+      .then( response => {
+        console.log("profile response",response);
       this.setState({
         username: response.username,
-        profile_pic: response.profile_pic,
-        isEditing: response.isEditing,
         city: response.city,
         join_date: response.join_date
       });
