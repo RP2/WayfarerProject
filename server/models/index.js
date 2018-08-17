@@ -4,10 +4,16 @@ mongoose.connect(
   { useNewUrlParser: true }
 );
 
+// const mongoose = require("mongoose");
+// mongoose.connect(
+//   "mongodb://localhost/wayfarer",
+//   { useNewUrlParser: true }
+// );
+
 let Post = require("./post.js");
 let User = require("./user.js");
 
 module.exports = {
   Post: Post,
-  User: User,
+  User: User
 };
