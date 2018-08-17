@@ -5,10 +5,6 @@ import editModel from "../model/editProfile";
 class Profile extends Component {
   state = {
     isEditing: false,
-    username: null,
-    city: "",
-    join_date: null,
-    profile_pic: "",
   };
 
   editProfile = (event) => {
@@ -23,11 +19,12 @@ class Profile extends Component {
       if(res.status===404){
         console.log('request failed')
       }
-      this.props.history.push("/profile")
+      this.setState({
+        isEditing: false,
+        profile_pic: res.data.profile_pic,
+        city: res.data.city,
+      });
     })
-    this.setState({
-      isEditing: false,
-    });
   };
 
   componentDidMount() {
@@ -43,6 +40,7 @@ class Profile extends Component {
       .then( (res) => {
         console.log("profile response", res.data);
       this.setState({
+        profile_pic: res.data.profile_pic,
         username: res.data.username,
         city: res.data.city,
         join_date: res.data.join_date
@@ -60,7 +58,7 @@ class Profile extends Component {
         <div className="AboutUser">
           <form onSubmit={this.saveProfile}>
             {this.state.isEditing ? (
-                <input type="text" ref="profile_pic" placeholder="picture" />
+                <input type="text" ref="profile_pic" placeholder="links only" />
               ) : (
                 <img src={this.state.profile_pic} alt="profile_pic" />
               )}

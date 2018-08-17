@@ -51,7 +51,7 @@ function index(req, res) {
     db.User.findOne({username: req.params.user_id}, function(err, foundUser) {
       if (err) { console.log('userController.update error', err); }
       foundUser.city = req.body.city;
-      foundUser.picture = req.body.picture_pic;
+      foundUser.profile_pic = req.body.profile_pic;
       foundUser.save(function(err, savedUser){
         res.status(200).json(savedUser);
       });
