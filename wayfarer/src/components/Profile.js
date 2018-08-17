@@ -15,16 +15,16 @@ class Profile extends Component {
     this.setState({ isEditing: !this.state.isEditing });
   };
 
-  //   saveProfile = event => {
-  //     event.preventDefault();
-  //     this.setState({
-  //       isEditing: false,
-  //       username: ,
-  //       city: ,
-  //       join_date: ,
-  //       profile_pic: "#"
-  //     });
-  //   };
+  // saveProfile = event => {
+  //   event.preventDefault();
+  //   this.setState({
+  //     isEditing: false,
+  //     username: ,
+  //     city: ,
+  //     join_date: ,
+  //     profile_pic: "#"
+  //   });
+  // };
 
   componentDidMount() {
     UserModel.getOne({ username: this.state.username }).then(response => {
@@ -60,12 +60,13 @@ class Profile extends Component {
             ) : (
               <p>{this.state.city}</p>
             )}
-            <li>Join Date:</li>
+            <li>Image</li>
             {this.state.isEditing ? (
-              <input id="join_date" type="text" name="join-date" />
+              <input id="image" type="text" name="image" />
             ) : (
-              <p>{this.state.join_date}</p>
+              <p>{this.state.image}</p>
             )}
+            <li>Join Date: {this.state.join_date}</li>
           </ul>
           <button onSubmit={this.saveProfile}>Save</button>
         </div>
