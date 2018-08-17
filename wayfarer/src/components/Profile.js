@@ -58,13 +58,13 @@ class Profile extends Component {
         <div className="AboutUser">
           <form onSubmit={this.saveProfile}>
             {this.state.isEditing ? (
-                <input type="text" ref="profile_pic" placeholder="links only" />
+                <input type="text" ref="profile_pic" placeholder="links only" defaultValue={this.state.profile_pic} />
               ) : (
                 <img src={this.state.profile_pic} alt="profile_pic" />
               )}
               <p>Username: {this.state.username}</p>
               {this.state.isEditing ? (
-                <input type="text" ref="city" placeholder="city" />
+                <input type="text" ref="city" placeholder="city" defaultValue={this.state.city} />
               ) : (
                 <p>City: {this.state.city}</p>
               )}
