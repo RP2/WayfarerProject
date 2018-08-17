@@ -12,7 +12,6 @@ class Login extends Component {
             if(res.status===404){
                 console.log('request failed')
             }
-            console.log(this.props.setAuth);
             this.props.setAuth();
          });
         this.props.history.push("/profile")

@@ -19,6 +19,12 @@ class App extends Component {
     })
   }
 
+  logout = () => {
+    this.setState({
+      auth: false,
+    })
+  }
+
   render() {
 
     return (
@@ -32,6 +38,7 @@ class App extends Component {
               <li className="nav-item"><NavLink className="nav-link" exact to="/">Home</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/profile">Profile</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/browse">Browse</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link" exact to="/" onClick={this.logout}>logout</NavLink></li>
             </ul>
             
             :
