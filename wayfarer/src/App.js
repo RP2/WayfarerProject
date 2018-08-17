@@ -13,6 +13,12 @@ class App extends Component {
     auth: false,
   }
 
+  setAuth = () => {
+    this.setState({
+      auth: true,
+    })
+  }
+
   render() {
 
     return (
@@ -39,8 +45,10 @@ class App extends Component {
         </nav>
         <div className="container">
           <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
+            {/* <Route path="/login" component={Login} setAuth={this.setAuth}/> */}
+            <Route path="/login" render={(props) => <Login {...props} setAuth={this.setAuth}/>}/>
+            {/* <Route path="/signup" component={Signup} /> */}
+            <Route path="/signup" render={(props) => <Signup {...props} setAuth={this.setAuth}/>}/>
             <Route path="/profile" component={Profile} />
             <Route path="/browse" component={Browse} />
             <Route exact path="/" component={Landing} />

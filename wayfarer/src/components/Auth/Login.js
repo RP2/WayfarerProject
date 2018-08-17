@@ -3,11 +3,6 @@ import Model from "../../model/loginModel";
 
 
 class Login extends Component {
-  onSubmit = event => {
-    event.preventDefault();
-    this.props.history.push("/profile");
-  };
-
     onSubmit = (event) => {
         console.log('in submit', this.refs.username.value, this.refs.password.value);
         event.preventDefault();
@@ -17,6 +12,8 @@ class Login extends Component {
             if(res.status===404){
                 console.log('request failed')
             }
+            console.log(this.props.setAuth);
+            this.props.setAuth();
          });
         this.props.history.push("/profile")
     }
