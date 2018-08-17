@@ -50,32 +50,27 @@ class Profile extends Component {
     return (
       <div className="Profile">
         <h2>Profile</h2>
+        {this.state.isEditing ? ( <p></p> ) :(
         <button onClick={this.editProfile}>Edit</button>
-        <img src="" alt="user-pic" />
+        )}
         <div className="AboutUser">
-          <img src={this.state.profile_pic} alt="#" />
-          <ul>
-            <li>Username:</li>
-            {this.state.isEditing ? (
-              <input id="username" type="text" name="username" />
+          {this.state.isEditing ? (
+              <input id="image" type="text" name="image" placeholder="picture" />
             ) : (
-              <p>{this.state.username}</p>
+              <img src={this.state.profile_pic} alt="profile_pic" />
             )}
-            <li>City:</li>
+            <p>Username: {this.state.username}</p>
             {this.state.isEditing ? (
-              <input id="city" type="text" name="city" />
+              <input id="city" type="text" name="city" placeholder="city" />
             ) : (
-              <p>{this.state.city}</p>
+              <p>City: {this.state.city}</p>
             )}
-            <li>Image</li>
+            <p>Join Date: {this.state.join_date}</p>
             {this.state.isEditing ? (
-              <input id="image" type="text" name="image" />
-            ) : (
-              <p>{this.state.image}</p>
-            )}
-            <li>Join Date: {this.state.join_date}</li>
-          </ul>
           <button onSubmit={this.saveProfile}>Save</button>
+            ) : (
+              <p></p>
+            )}
         </div>
         <div className="UserPosts" />
       </div>
