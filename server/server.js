@@ -1,10 +1,7 @@
 // require Express, create an Express app
-const cors = require('cors');
-const express = require('express');
+const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-
-app.use(cors());
 
 // add the body-parser middleware to the server
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,6 +12,7 @@ const db = require("./models");
 const controllers = require("./controllers");
 
 // ########################### ROUTES ###############################
+
 //login or create account/post routes
 app.post("/api/user/login", controllers.user.login);
 app.post("/api/user/signup", controllers.user.signup);
