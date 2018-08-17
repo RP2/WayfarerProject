@@ -23,10 +23,23 @@ class App extends Component {
   }
 
   logout = () => {
+    if (localStorage.getItem("username") != null) {
+      localStorage.removeItem("username");
+    }
     this.setState({
       auth: false,
       username: null,
     })
+    this.props.history.push("/")
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem("username") != null ) {
+      this.setState({
+        auth: true,
+        username: localStorage.getItem("username"),
+      })
+    }
   }
 
   render() {
@@ -57,14 +70,12 @@ class App extends Component {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink
+                  <span
                     className="nav-link"
-                    exact
-                    to="/"
                     onClick={this.logout}
                   >
                     logout
-                  </NavLink>
+                  </span>
                 </li>
               </ul>
             ) : (

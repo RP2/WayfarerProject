@@ -40,7 +40,7 @@ function index(req, res) {
   }
 
   function profile(req, res) {
-    db.User.find({username: req.username}, function(err, foundUser){
+    db.User.findOne({username: req.params.user_id}, function(err, foundUser){
       if (err) {console.log(err)}
       res.status(200).json(foundUser);
     })

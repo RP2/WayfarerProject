@@ -4,10 +4,10 @@ import Model from "../model/userModel";
 class Profile extends Component {
   state = {
     isEditing: false,
-    username: "",
-    city: "",
-    join_date: "",
-    profile_pic: "http://picsum.photos/200"
+    username: '',
+    city: null,
+    join_date: null,
+    profile_pic: null,
   };
 
   editProfile = event => {
@@ -30,18 +30,18 @@ class Profile extends Component {
     console.log('component did mount')
     let username; 
     if (localStorage.getItem("username") === null) {
-      console.log('reeee')
+      return this.props.history.push("/login")
     } else {
       username = localStorage.getItem("username")
     };
     
     Model.profile(username)
-      .then( response => {
-        console.log("profile response",response);
+      .then( (res) => {
+        console.log("profile response", res.data);
       this.setState({
-        username: response.username,
-        city: response.city,
-        join_date: response.join_date
+        username: res.data.username,
+        city: res.data.city,
+        join_date: res.data.join_date
       });
     });
   }
