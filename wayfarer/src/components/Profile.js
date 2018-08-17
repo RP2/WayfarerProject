@@ -1,30 +1,34 @@
 import React, { Component } from "react";
 import Model from "../model/userModel";
+import editModel from "../model/editProfile";
 
 class Profile extends Component {
   state = {
     isEditing: false,
-    username: '',
-    city: null,
+    username: null,
+    city: "",
     join_date: null,
-    profile_pic: null,
+    profile_pic: "",
   };
 
-  editProfile = event => {
+  editProfile = (event) => {
     event.preventDefault();
     this.setState({ isEditing: !this.state.isEditing });
   };
 
-  // saveProfile = event => {
-  //   event.preventDefault();
-  //   this.setState({
-  //     isEditing: false,
-  //     username: ,
-  //     city: ,
-  //     join_date: ,
-  //     profile_pic: "#"
-  //   });
-  // };
+  saveProfile = (event) => {
+    event.preventDefault();
+    let username = localStorage.getItem("username")
+    editModel.edit(username, this.refs.city.value, this.refs.profile_pic.value).then( (res) => {
+      if(res.status===404){
+        console.log('request failed')
+      }
+      this.props.history.push("/profile")
+    })
+    this.setState({
+      isEditing: false,
+    });
+  };
 
   componentDidMount() {
     console.log('component did mount')
@@ -54,23 +58,26 @@ class Profile extends Component {
         <button onClick={this.editProfile}>Edit</button>
         )}
         <div className="AboutUser">
-          {this.state.isEditing ? (
-              <input id="image" type="text" name="image" placeholder="picture" />
-            ) : (
-              <img src={this.state.profile_pic} alt="profile_pic" />
-            )}
-            <p>Username: {this.state.username}</p>
+          <form onSubmit={this.saveProfile}>
             {this.state.isEditing ? (
-              <input id="city" type="text" name="city" placeholder="city" />
-            ) : (
-              <p>City: {this.state.city}</p>
-            )}
-            <p>Join Date: {this.state.join_date}</p>
-            {this.state.isEditing ? (
-          <button onSubmit={this.saveProfile}>Save</button>
-            ) : (
-              <p></p>
-            )}
+                <input type="text" ref="profile_pic" placeholder="picture" />
+              ) : (
+                <img src={this.state.profile_pic} alt="profile_pic" />
+              )}
+              <p>Username: {this.state.username}</p>
+              {this.state.isEditing ? (
+                <input type="text" ref="city" placeholder="city" />
+              ) : (
+                <p>City: {this.state.city}</p>
+              )}
+              <p>Join Date: {this.state.join_date}</p>
+              {this.state.isEditing ? (
+                <input type="submit" value="Submit" />
+            // <button onSubmit={this.saveProfile}>Save</button>
+              ) : (
+                <p></p>
+              )}
+            </form>
         </div>
         <div className="UserPosts" />
       </div>

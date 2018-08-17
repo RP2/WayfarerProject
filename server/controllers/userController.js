@@ -38,7 +38,7 @@ function index(req, res) {
       res.status(200).json(user);
     });
   }
-
+// user profile
   function profile(req, res) {
     db.User.findOne({username: req.params.user_id}, function(err, foundUser){
       if (err) {console.log(err)}
@@ -46,18 +46,18 @@ function index(req, res) {
     })
   }
 
-  // user profile
+//edit profile
   function updateProfile(req, res) {
-    db.User.findById(req.params.id, function(err, foundUser) {
+    db.User.findOne({username: req.params.user_id}, function(err, foundUser) {
       if (err) { console.log('userController.update error', err); }
-      foundUser.username = req.body.username;
       foundUser.city = req.body.city;
-      foundUser.picture = req.body.picture;
+      foundUser.picture = req.body.picture_pic;
       foundUser.save(function(err, savedUser){
         res.status(200).json(savedUser);
       });
     });
   };
+
   
 
 module.exports = {

@@ -18,7 +18,7 @@ const controllers = require("./controllers");
 //login or create account/post routes
 app.post("/api/users/login", controllers.user.login);
 app.post("/api/users/signup", controllers.user.signup);
-app.post("/api/users/:user_id", controllers.user.updateProfile);
+app.post("/api/users/:user_id/update", controllers.user.updateProfile);
 
 app.get("/api/users", controllers.user.index);
 app.get("/api/users/:user_id", controllers.user.profile);

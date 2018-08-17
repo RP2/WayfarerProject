@@ -5,11 +5,11 @@ let Post = require("./post.js");
 
 let userSchema = new Schema({
   name: String,
-  city: String,
+  city: {type: String, default: ""},
   join_date: {type: Date, default: Date.now},
   username: String,
   password: String,
-  img: String,
+  profile_pic: String,
   posts: [
     {
       ref: Post,
