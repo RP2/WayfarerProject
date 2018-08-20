@@ -48,9 +48,7 @@ class App extends Component {
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
           <div className="collapese navbar-collapse" id="navigation">
             <h1>
-              <NavLink className="nav-link" exact to="/">
                 Wayfarer
-              </NavLink>
             </h1>
             {this.state.auth ? (
               <ul className="navbar-nav ml-auto">

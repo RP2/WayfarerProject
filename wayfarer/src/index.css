@@ -12,6 +12,12 @@ h1 {
   color: white;
 }
 
+.registerForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .Landing {
   width: 100%;
 }
@@ -23,14 +29,14 @@ h1 {
 .slide-arrow-left {
   position: relative;
   top: 100%;
-  left: 49%;
+  left: 40%;
   color: white;
 }
 
 .slide-arrow-right {
   position: relative;
-  top: 94.6%;
-  right: -54%;
+  top: 93%;
+  right: -60%;
   color: white;
 }
 
@@ -41,8 +47,8 @@ h1 {
 }
 
 #carousel-size {
-  height: 450px;
-  width: 95%;
+  height: 50vh;
+  width: 100%;
 }
 
 .container-fluid {
@@ -53,9 +59,14 @@ h1 {
 }
 
 .About {
-  width: 85%;
+  width: 100%;
   margin: 3rem auto;
   top: 100%;
+}
+
+#aboutTitle {
+  background-color: #343a40;
+  color: white;
 }
 
 .nav-link {

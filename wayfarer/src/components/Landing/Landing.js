@@ -32,18 +32,6 @@ class Landing extends Component {
     this.setState({ currentImageIndex: index });
   };
 
-  // city = currentImageIndex => {
-  //   if (currentImageIndex === 0) {
-  //     this.setState({ currentCity: "London" });
-  //   } else if (currentImageIndex === 1) {
-  //     return this.setState({ currentCity: "Tokyo" });
-  //   } else if (currentImageIndex === 2) {
-  //     return this.setState({ currentCity: "San Francisco" });
-  //   } else if (currentImageIndex === 3) {
-  //     return this.setState({ currentCity: "Paris" });
-  //   }
-  // };
-
   render() {
     return (
       <div id="carousel-size">
@@ -59,7 +47,6 @@ class Landing extends Component {
         />
         <Imageslide
           url={imgUrls[this.state.currentImageIndex]}
-          // city={this.city}
         />
         <About />
       </div>

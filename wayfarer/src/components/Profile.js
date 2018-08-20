@@ -51,7 +51,7 @@ class Profile extends Component {
   render() {
     return (
       <div className="Profile">
-        <h2>Profile</h2>
+        <h2>{this.state.username}'s Profile Page</h2>
         {this.state.isEditing ? ( <p></p> ) :(
         <button onClick={this.editProfile}>Edit</button>
         )}
@@ -77,7 +77,7 @@ class Profile extends Component {
               )}
             </form>
         </div>
-        <div className="UserPosts" />
+        <div className="UserPosts"></div>
       </div>
     );
   }
