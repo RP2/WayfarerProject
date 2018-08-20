@@ -21,7 +21,7 @@ class Browse extends Component {
         } else {
           username = localStorage.getItem("username")
         };
-        Model.Posts().then( (res) => {
+        Model.Posts(username).then( (res) => {
             console.log('from Post attempt', res);
             if(res.status===404){
                 console.log('request failed')
@@ -44,19 +44,19 @@ class Browse extends Component {
                 <h2>Cities</h2>
                 <ul id="cities">
                     <li id="Paris" onClick={this.citySelect}>
-                        <img src={Paris} />
+                        <img src={Paris} alt="img"/>
                         <h5>Paris</h5>
                     </li>
                     <li id="Tokyo" onClick={this.citySelect}>
-                    <img src={Tokyo} />
+                    <img src={Tokyo} alt="img"/>
                         <h5>Tokyo</h5>
                     </li>
                     <li id="London" onClick={this.citySelect}> 
-                    <img src={London} />
+                    <img src={London} alt="img"/>
                         <h5>London</h5>
                     </li>
                     <li id="San Francisco" onClick={this.citySelect}>
-                    <img src={SF} />
+                    <img src={SF} alt="img"/>
                         <h5>San Francisco</h5>
                     </li>
                 </ul>

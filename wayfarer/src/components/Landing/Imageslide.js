@@ -1,6 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Landing from "./Landing";
 
 const Imageslide = ({ url }, city) => {
   let styles = {
