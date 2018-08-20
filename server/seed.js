@@ -38,7 +38,7 @@ var post = {
 
 db.City.remove({}, (err, removedPosts) => {
   if (err) throw err;
-  db.City.create({name: "San Francisco", country: "USA"}, (err, newCity) => {
+  db.City.create(city_list, (err, newCity) => {
     if (err) throw err;
     db.User.remove({}, (err, removedUsers) => {
       if (err) throw err;
