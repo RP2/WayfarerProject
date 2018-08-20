@@ -1,6 +1,6 @@
 // require Express, create an Express app
-const cors = require('cors');
-const express = require('express');
+const cors = require("cors");
+const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 
@@ -21,12 +21,16 @@ app.post("/api/users/signup", controllers.user.signup);
 app.post("/api/users/:user_id/update", controllers.user.updateProfile);
 app.post("/api/users/:user_id/post", controllers.post.create);
 
+// user routes
 app.get("/api/users", controllers.user.index);
 app.get("/api/users/:user_id", controllers.user.profile);
+
+// city routes
 app.get("/api/cities", controllers.city.index);
 app.get("/api/cities/:city_id", controllers.city.show);
 app.get("/api/cities/:city_id/posts", controllers.post.index);
 
+// post routes
 app.get("/api/posts", controllers.post.index);
 app.get("api/posts/:post_id", controllers.post.detail);
 
