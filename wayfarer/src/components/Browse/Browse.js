@@ -44,7 +44,7 @@ class Browse extends Component {
     render() {
 
         let posts = this.state.posts.map((post, index) => {
-            return <div id={post._id} key={index} onClick={this.showPostPage}><p>{post.title}</p></div>
+            return <div id={post._id} key={index} onClick={this.showPostPage}><Link to={post._id}>{post.title}</Link></div>
         })
 
         return (

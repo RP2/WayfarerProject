@@ -23,7 +23,10 @@ function create(req, res) {
 }
 
 function detail(req, res) {
+  // console.log(req.params.post_id);
+  // res.send('Detail')
   db.Post.findById(req.params.post_id, function(err, foundPost) {
+    
     if (err) {
       console.log("error", err);
     }

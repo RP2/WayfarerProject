@@ -33,7 +33,7 @@ app.get("/api/cities/:city_id/posts", controllers.post.cityPosts);
 
 // post routes
 app.get("/api/posts", controllers.post.index);
-app.get("api/posts/:post_id", controllers.post.detail);
+app.get("/api/posts/:post_id", controllers.post.detail);
 
 // create posts
 
