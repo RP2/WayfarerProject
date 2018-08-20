@@ -30,26 +30,57 @@ var user = {
 }
 
 var post = {
-  title: "Test Post One",
-  text: "This is the text for Post One...",
-  user: '',
-  city: '',
+  title: "Test Post Two",
+  text: "This is the text for Post Two...",
 }
 
-db.City.remove({}, (err, removedPosts) => {
+// db.Post.create({title: 'Post One', text: 'Text for Post One...'}, (err, newPost) => {
+//   if (err) throw err;
+//   process.exit();
+// })
+
+// var newPost = new db.Post({title: 'Testing...', text: 'Post....'});
+// newPost.save();
+// process.exit();
+
+// db.City.remove({}, (err, removedPosts) => {
+//   if (err) throw err;
+//   db.City.create(city_list, (err, newCity) => {
+//     if (err) throw err;
+//     db.User.remove({}, (err, removedUsers) => {
+//       if (err) throw err;
+//       db.User.create(user, (err, newUser) => {
+//         if (err) throw err;
+//         db.Post.remove({}, (err, removedPosts) => {
+//           if(err) throw err;
+          
+//           // newPost.user = newUser._id;
+//           // newPost.city = newCity._id;
+//           // newPost.save();
+//           // process.exit();
+//         })
+//         var newPost = new db.Post({title: 'Test Post 4', text: 'Some text...'});
+//           newPost.save();
+//           process.exit();
+//       })
+//     })
+//   })
+// })
+
+db.Post.remove({}, (err, removedPosts) => {
   if (err) throw err;
-  db.City.create(city_list, (err, newCity) => {
+  db.City.remove({}, (err, removedCities) => {
     if (err) throw err;
-    db.User.remove({}, (err, removedUsers) => {
+    db.City.create(city_list, (err, newCity) => {
       if (err) throw err;
-      db.User.create(user, (err, newUser) => {
+      db.User.remove({}, (err, removedUsers) => {
         if (err) throw err;
-        db.Post.remove({}, (err, removedPosts) => {
-          if(err) throw err;
-          var newPost = new db.Post(post);
-          newPost.user = newUser;
-          newPost.city = newCity;
-          newPost.save();
+        db.User.create(user, (err, newUser) => {
+          if (err) throw err;
+          db.Post.create({title: 'Test Post 4', text: 'Some text...', user: newUser._id, city: newCity[3]._id}, (err, newPost) => {
+            if (err) throw err;
+            process.exit();
+          });
         })
       })
     })

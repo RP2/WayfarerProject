@@ -22,6 +22,7 @@ class Browse extends Component {
           username = localStorage.getItem("username")
         };
         Model.Posts(username).then( (res) => {
+            console.log(res);
             if(res.status===404){
                 console.log('request failed')
             }
@@ -36,6 +37,11 @@ class Browse extends Component {
     }
 
     render() {
+
+        let posts = this.state.posts.map((post, index) => {
+            return <div key={index}><p>{post.title}</p></div>
+        })
+
         return (
             <div className="Browse">
             <h2>Browse</h2>
@@ -58,11 +64,9 @@ class Browse extends Component {
                     <img src={SF} alt="img"/>
                         <h5>San Francisco</h5>
                     </li>
-                </ul>
-                <div id="userPosts">
-                    <p>{this.state.posts}</p>
-                </div>
+                </ul>  
             </div>
+            <div id="userPosts">{posts}</div>
                 <p><Link to="/createpost">CreatePost</Link></p>
             </div>
         );
