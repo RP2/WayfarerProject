@@ -6,8 +6,10 @@ mongoose.connect(
 
 let Post = require("./post.js");
 let User = require("./user.js");
+let City = require("./city.js");
 
 module.exports = {
   Post: Post,
-  User: User
+  User: User,
+  City: City,
 };

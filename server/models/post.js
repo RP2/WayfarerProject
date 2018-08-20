@@ -6,8 +6,8 @@ let postSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "User" },
   title: String,
   text: String,
-  city: String,
-  img: String
+  city: { type: Schema.Types.ObjectId, ref: "City" },
+  img: String,
 });
 
 let Post = mongoose.model("Post", postSchema);
