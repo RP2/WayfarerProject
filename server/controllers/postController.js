@@ -1,14 +1,44 @@
 const db = require("../models");
 
 function index(req, res) {
-  db.User.findById(req.params.user_id, function(err, foundUser) {
+  // db.Post.find({city_id: req.params.city_id}, function(err, foundPost) {
+  //   if (err) {
+  //     console.log("error", err);
+  //   }
+  //   // posts = foundCity.posts;
+  //   // console.log(posts)
+  //   res.json(foundPost);
+  // });
+  db.Post.find({}, (err, foundPosts) => {
+    if(err) throw err;
+    res.json(foundPosts);
+  })
+}
+
+function create(req, res) {
+  db.Post.findById(req.params.post_id, function(err, foundPost) {
     if (err) {
       console.log("error", err);
     }
-    res.json(foundUser.posts);
+    var newPost = new db.Post(req.body);
+    foundPost.posts.push(newPost);
+    foundPost.save(function(err, savedPost) {
+      res.json(newPost);
+    });
   });
 }
 
+function detail(req, res) {
+  db.Post.findById(req.params.post_id, function(err, foundPost){
+    if (err) {
+      console.log("error", err);
+    }
+    res.json(foundPost);
+  })
+}
+
 module.exports = {
-  index: index
+  index: index,
+  create: create,
+  detail: detail,
 };
