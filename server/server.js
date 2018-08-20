@@ -28,6 +28,7 @@ app.get("/api/cities/:city_id", controllers.city.show);
 app.get("/api/cities/:city_id/posts", controllers.post.index);
 
 app.get("/api/posts", controllers.post.index);
+app.get("api/posts/:post_id", controllers.post.detail);
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
 app.listen(process.env.PORT || 4000, () => {

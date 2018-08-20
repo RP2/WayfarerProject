@@ -16,19 +16,29 @@ function index(req, res) {
 }
 
 function create(req, res) {
-  db.city.findById(req.params.city_id, function(err, foundCity) {
+  db.Post.findById(req.params.post_id, function(err, foundPost) {
     if (err) {
       console.log("error", err);
     }
     var newPost = new db.Post(req.body);
-    foundCity.posts.push(newPost);
-    foundCity.save(function(err, savedPost) {
+    foundPost.posts.push(newPost);
+    foundPost.save(function(err, savedPost) {
       res.json(newPost);
     });
   });
 }
 
+function detail(req, res) {
+  db.Post.findById(req.params.post_id, function(err, foundPost){
+    if (err) {
+      console.log("error", err);
+    }
+    res.json(foundPost);
+  })
+}
+
 module.exports = {
   index: index,
   create: create,
+  detail: detail,
 };
