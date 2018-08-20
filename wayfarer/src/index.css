@@ -16,7 +16,23 @@ h1 {
   width: 100%;
 }
 
-.Carousel {
+#carousel-container {
+  position: relative;
+}
+
+.slide-arrow-left {
+  position: relative;
+  top: 90%;
+  left: 49%;
+}
+
+.slide-arrow-right {
+  position: relative;
+  top: 74%;
+  right: -52%;
+}
+
+.carousel {
   height: 300px;
   width: 100%;
   border: 2px solid black;
@@ -32,6 +48,7 @@ h1 {
 .About {
   width: 85%;
   margin: 3rem auto;
+  top: 100%;
 }
 
 .nav-link {
@@ -52,7 +69,7 @@ h1 {
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
   margin: 2rem 1rem;
-  width: 30%;
+  width: 80%;
 }
 
 .cities-column {
@@ -62,5 +79,6 @@ h1 {
 }
 
 #cities img {
-  height: 30px;
+  height: 100px;
+  width: 120px;
 }
