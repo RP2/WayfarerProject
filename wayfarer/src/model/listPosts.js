@@ -2,7 +2,7 @@ import axios from 'axios'
 
 class listPosts {
     static Posts(id){
-        let request = axios.get(`http://localhost:4000/api/cities/${id}/posts`)
+        let request = axios.get(`http://localhost:4000/api/posts`)
         return request
     }
   }

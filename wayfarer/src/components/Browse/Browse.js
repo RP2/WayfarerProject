@@ -22,7 +22,7 @@ class Browse extends Component {
                 console.log('request failed')
             }
             this.setState ({
-                posts: res.users.cities.id.posts,
+                posts: res.data.posts,
                 })
         })
     };
