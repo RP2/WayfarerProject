@@ -1,26 +1,26 @@
-import React, { Component } from 'react';
-import { Switch, Route, NavLink, withRouter } from 'react-router-dom';
-import Landing from './components/Landing/Landing';
-import Login from './components/Auth/Login';
-import Signup from './components/Auth/Signup';
-import Profile from './components/Profile';
-import Browse from './components/Browse/Browse';
-import CreatePost from './components/Browse/CreatePost';
+import React, { Component } from "react";
+import { Switch, Route, NavLink, withRouter } from "react-router-dom";
+import Landing from "./components/Landing/Landing";
+import Login from "./components/Auth/Login";
+import Signup from "./components/Auth/Signup";
+import Profile from "./components/Profile";
+import Browse from "./components/Browse/Browse";
+import CreatePost from "./components/Browse/CreatePost";
 
 class App extends Component {
   state = {
     auth: false,
-    username: null,
-  }
+    username: null
+  };
 
-  setAuth = (username) => {
+  setAuth = username => {
     this.setState({
       auth: true,
-      username: username,
-    })
-    
+      username: username
+    });
+
     // console.log("App js State = ", this.state);
-  }
+  };
 
   logout = () => {
     if (localStorage.getItem("username") != null) {
@@ -28,17 +28,17 @@ class App extends Component {
     }
     this.setState({
       auth: false,
-      username: null,
-    })
-    this.props.history.push("/")
-  }
+      username: null
+    });
+    this.props.history.push("/");
+  };
 
   componentDidMount() {
-    if (localStorage.getItem("username") != null ) {
+    if (localStorage.getItem("username") != null) {
       this.setState({
         auth: true,
-        username: localStorage.getItem("username"),
-      })
+        username: localStorage.getItem("username")
+      });
     }
   }
 
@@ -70,10 +70,7 @@ class App extends Component {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <span
-                    className="nav-link"
-                    onClick={this.logout}
-                  >
+                  <span className="nav-link" onClick={this.logout}>
                     logout
                   </span>
                 </li>
@@ -107,10 +104,22 @@ class App extends Component {
               render={props => <Login {...props} setAuth={this.setAuth} />}
             />
             {/* <Route path="/signup" component={Signup} /> */}
-            <Route path="/signup" render={(props) => <Signup {...props} setAuth={this.setAuth}/>}/>
-            <Route path="/profile" render={(props) => <Profile {...props} setAuth={this.state.auth} username={this.state.username} /> } />
+            <Route
+              path="/signup"
+              render={props => <Signup {...props} setAuth={this.setAuth} />}
+            />
+            <Route
+              path="/profile"
+              render={props => (
+                <Profile
+                  {...props}
+                  setAuth={this.state.auth}
+                  username={this.state.username}
+                />
+              )}
+            />
             <Route path="/browse" component={Browse} />
-            <Route exact path="/" component={Landing} />
+            <Route path="/" component={Landing} />
             <Route path="/createpost" component={CreatePost} />
             <Route path="/*" render={() => <div>Error 404</div>} />
           </Switch>
