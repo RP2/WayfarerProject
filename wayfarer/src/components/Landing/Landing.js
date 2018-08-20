@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import About from "./About";
 import Arrow from "./Arrow";
 import Imageslide from "./Imageslide";
-import Sf from "./carouselImages/sf.jpg";
+import SF from "./carouselImages/sf.jpg";
 import Tokyo from "./carouselImages/tokyo.jpg";
 import London from "./carouselImages/london.jpg";
 import Paris from "./carouselImages/paris.jpg";
 
-const imgUrls = [London, Tokyo, Sf, Paris];
+const imgUrls = [London, Tokyo, SF, Paris];
 
 class Landing extends Component {
   state = {
@@ -32,31 +32,35 @@ class Landing extends Component {
     this.setState({ currentImageIndex: index });
   };
 
-  // carouselImg = () => {
-  //   document;
-  //   let imagecontainer = document.getElementById("carousel-container");
-  //   imagecontainer.setAttribute("backgroundImage", this.styles.backgroundImage);
+  // city = currentImageIndex => {
+  //   if (currentImageIndex === 0) {
+  //     this.setState({ currentCity: "London" });
+  //   } else if (currentImageIndex === 1) {
+  //     return this.setState({ currentCity: "Tokyo" });
+  //   } else if (currentImageIndex === 2) {
+  //     return this.setState({ currentCity: "San Francisco" });
+  //   } else if (currentImageIndex === 3) {
+  //     return this.setState({ currentCity: "Paris" });
+  //   }
   // };
 
   render() {
     return (
-      <div>
-        <div className="carousel">
-          <Arrow
-            direction="left"
-            clickFunction={this.previousSlide}
-            glyph="&#9664;"
-          />
-          <Imageslide
-            carouselImg={this.carouselImg}
-            url={imgUrls[this.state.currentImageIndex]}
-          />
-          <Arrow
-            direction="right"
-            clickFunction={this.nextSlide}
-            glyph="&#9654;"
-          />
-        </div>
+      <div id="carousel-size">
+        <Arrow
+          direction="left"
+          clickFunction={this.previousSlide}
+          glyph="&#9664;"
+        />
+        <Arrow
+          direction="right"
+          clickFunction={this.nextSlide}
+          glyph="&#9654;"
+        />
+        <Imageslide
+          url={imgUrls[this.state.currentImageIndex]}
+          // city={this.city}
+        />
         <About />
       </div>
     );
