@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Model from "../../model/listPosts";
+import London from "../../images/london.jpg";
+import Paris from "../../images/paris.jpg";
+import SF from "../../images/sf.jpg";
+import Tokyo from "../../images/tokyo.jpg";
 
 
 class Browse extends Component {
@@ -40,19 +44,19 @@ class Browse extends Component {
                 <h2>Cities</h2>
                 <ul id="cities">
                     <li id="Paris" onClick={this.citySelect}>
-                        <img src="#" alt="#" />
+                        <img src={Paris} />
                         <h5>Paris</h5>
                     </li>
                     <li id="Tokyo" onClick={this.citySelect}>
-                        <img src="#" alt="#" />
+                    <img src={Tokyo} />
                         <h5>Tokyo</h5>
                     </li>
                     <li id="London" onClick={this.citySelect}> 
-                        <img src="#" alt="#" />
+                    <img src={London} />
                         <h5>London</h5>
                     </li>
                     <li id="San Francisco" onClick={this.citySelect}>
-                        <img src="#" alt="#" />
+                    <img src={SF} />
                         <h5>San Francisco</h5>
                     </li>
                 </ul>
