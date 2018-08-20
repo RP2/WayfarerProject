@@ -22,20 +22,27 @@ h1 {
 
 .slide-arrow-left {
   position: relative;
-  top: 90%;
+  top: 100%;
   left: 49%;
+  color: white;
 }
 
 .slide-arrow-right {
   position: relative;
-  top: 74%;
-  right: -52%;
+  top: 94.6%;
+  right: -54%;
+  color: white;
 }
 
 .carousel {
   height: 300px;
   width: 100%;
   border: 2px solid black;
+}
+
+#carousel-size {
+  height: 450px;
+  width: 95%;
 }
 
 .container-fluid {
