@@ -15,6 +15,7 @@ const db = require("./models");
 const controllers = require("./controllers");
 
 // ########################### ROUTES ###############################
+
 //login or create account/post routes
 app.post("/api/users/login", controllers.user.login);
 app.post("/api/users/signup", controllers.user.signup);
@@ -28,7 +29,7 @@ app.get("/api/users/:user_id", controllers.user.profile);
 // city routes
 app.get("/api/cities", controllers.city.index);
 app.get("/api/cities/:city_id", controllers.city.show);
-app.get("/api/cities/:city_id/posts", controllers.post.index);
+app.get("/api/cities/:city_id/posts", controllers.post.cityPosts);
 
 // post routes
 app.get("/api/posts", controllers.post.index);
