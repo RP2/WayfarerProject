@@ -16,12 +16,13 @@ class Browse extends Component {
     } else {
       username = localStorage.getItem("username");
     }
-    Model.Posts(this.state.posts).then(res => {
+    Model.Posts().then(res => {
+      console.log("from Post attempt", res);
       if (res.status === 404) {
         console.log("request failed");
       }
       this.setState({
-        posts: res.data.posts
+        posts: res.data.title
       });
     });
   }
@@ -54,7 +55,9 @@ class Browse extends Component {
               <h5>San Francisco</h5>
             </li>
           </ul>
-          <div id="userPosts">{this.state.posts}</div>
+          <div id="userPosts">
+            <p>{this.state.posts}</p>
+          </div>
         </div>
         <p>
           <Link to="/createpost">CreatePost</Link>
