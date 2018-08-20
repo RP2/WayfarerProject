@@ -5,18 +5,16 @@ class About extends Component {
     return (
       <div className="About">
         <div className="container-fluid">
-          <h2>About Wayfarer</h2>
+          <h2 id="aboutTitle">About Wayfarer</h2>
           <div className="row">
             <div className="col-sm">
-              <h4>Mission</h4>
-              <p>
-                Our goal is to help people discover new things about places they
-                are visiting.
-              </p>
+              <h4>Past</h4>
+              <p>We have been in buisness since 2018.</p>
             </div>
             <div className="col-sm">
-              <h4>History</h4>
-              <p>We have been in buisness since 2018.</p>
+              <h4>Present</h4>
+              <p>Our goal is to help people discover new things about places they
+                are visiting.</p>
             </div>
             <div className="col-sm">
               <h4>Future</h4>

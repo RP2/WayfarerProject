@@ -52,7 +52,10 @@ class Profile extends Component {
   render() {
     return (
       <div className="Profile">
-        <h2>Profile</h2>
+        <h2>
+          {this.state.username}
+          's Profile Page
+        </h2>
         {this.state.isEditing ? (
           <p />
         ) : (

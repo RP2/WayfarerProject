@@ -22,7 +22,7 @@ class Login extends Component {
         return (
             <div className="Login">
             <h2>Login</h2>
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit} className="registerForm">
                 <input 
                     type="text" 
                     ref = "username"

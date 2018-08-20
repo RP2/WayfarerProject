@@ -13,7 +13,6 @@ const Imageslide = ({ url }, city) => {
 
   return (
     <div className="image-slide" style={styles}>
-      <h2>City</h2>
     </div>
   );
 };
