@@ -22,12 +22,11 @@ class Browse extends Component {
           username = localStorage.getItem("username")
         };
         Model.Posts(username).then( (res) => {
-            console.log('from Post attempt', res);
             if(res.status===404){
                 console.log('request failed')
             }
             this.setState ({
-                posts: res.data.title,
+                posts: res.data,
                 })
         })
     };
