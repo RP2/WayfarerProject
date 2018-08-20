@@ -66,10 +66,20 @@ function updateProfile(req, res) {
   });
 }
 
+function destroy(req, res) {
+  db.User.findByIdAndRemove({username: req.params.user_id}, function(err, foundUser){
+    if (err) {
+      console.log("userController.update error", err);
+    }
+    res.status(200).json(foundUser);
+  })
+}
+
 module.exports = {
   index: index,
   login: login,
   signup: signup,
   profile: profile,
-  updateProfile: updateProfile
+  updateProfile: updateProfile,
+  destroy: destroy,
 };

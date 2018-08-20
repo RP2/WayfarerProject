@@ -1,16 +1,10 @@
 const db = require("../models");
 
 function index(req, res) {
-  // db.Post.find({city_id: req.params.city_id}, function(err, foundPost) {
-  //   if (err) {
-  //     console.log("error", err);
-  //   }
-  //   // posts = foundCity.posts;
-  //   // console.log(posts)
-  //   res.json(foundPost);
-  // });
   db.Post.find({}, (err, foundPosts) => {
-    if (err) throw err;
+    if (err) {
+      console.log("error", err);
+    }
     res.json(foundPosts);
   });
 }
