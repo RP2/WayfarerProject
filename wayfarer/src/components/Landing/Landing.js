@@ -11,7 +11,9 @@ const imgUrls = [London, Tokyo, SF, Paris];
 
 class Landing extends Component {
   state = {
-    currentImageIndex: 0
+    currentImageIndex: 0,
+    timer: 4,
+    currentTimeout: null
   };
 
   previousSlide = () => {
@@ -29,7 +31,24 @@ class Landing extends Component {
     const shouldResetIndex = currentImageIndex === lastIndex;
     const index = shouldResetIndex ? 0 : currentImageIndex + 1;
 
-    this.setState({ currentImageIndex: index });
+    this.setState({ currentImageIndex: index, timer: 4 });
+  };
+
+  decrementTime = () => {
+    if (this.state.timer === 0) {
+      this.setState({
+        currentTimeout: window.clearInterval(this.decrementTime)
+      });
+      this.nextSlide();
+    } else {
+      this.setState({ timer: this.state.timer - 1 });
+    }
+  };
+
+  componentDidMount = () => {
+    this.setState({
+      currentTimeout: window.setInterval(this.decrementTime, 1000)
+    });
   };
 
   render() {
@@ -45,9 +64,7 @@ class Landing extends Component {
           clickFunction={this.nextSlide}
           glyph="&#9654;"
         />
-        <Imageslide
-          url={imgUrls[this.state.currentImageIndex]}
-        />
+        <Imageslide url={imgUrls[this.state.currentImageIndex]} />
         <About />
       </div>
     );

@@ -10,13 +10,13 @@ function index(req, res) {
 }
 
 function show(req, res) {
-    db.City.findById(req.params.city_id, function(err, foundCity) {
-        if(err) throw err;
-        res.json(foundCity)
-    });
-  }
+  db.City.findById(req.params.city_id, function(err, foundCity) {
+    if (err) throw err;
+    res.json(foundCity);
+  });
+}
 
 module.exports = {
-    index: index,
-    show: show,
-  };
+  index: index,
+  show: show
+};
