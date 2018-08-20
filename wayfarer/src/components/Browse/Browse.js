@@ -4,17 +4,6 @@ import Model from "../../model/listPosts";
 
 
 class Browse extends Component {
-  componentDidMount() {
-    console.log("component did mount");
-    let username;
-    if (localStorage.getItem("username") === null) {
-      return this.props.history.push("/login");
-    } else {
-      username = localStorage.getItem("username");
-    }
-  }
-
-
     state = {
         posts: [],
         city: '',
@@ -28,12 +17,13 @@ class Browse extends Component {
         } else {
           username = localStorage.getItem("username")
         };
-        Model.Posts(this.state.posts).then( (res) => {
+        Model.Posts().then( (res) => {
+            console.log('from Post attempt', res);
             if(res.status===404){
                 console.log('request failed')
             }
             this.setState ({
-                posts: res.data.posts,
+                posts: res.data.title,
                 })
         })
     };
@@ -67,7 +57,7 @@ class Browse extends Component {
                     </li>
                 </ul>
                 <div id="userPosts">
-                    {this.state.posts}
+                    <p>{this.state.posts}</p>
                 </div>
             </div>
                 <p><Link to="/createpost">CreatePost</Link></p>
