@@ -117,8 +117,8 @@ class App extends Component {
               )}
             />
             <Route path="/browse" component={Browse} />
-            <Route path="/" component={Landing} />
             <Route path="/createpost" component={CreatePost} />
+            <Route exact path="/" component={Landing} />
             <Route path="/*" render={() => <div>Error 404</div>} />
           </Switch>
         </div>
