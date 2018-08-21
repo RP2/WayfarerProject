@@ -1,8 +1,8 @@
 import axios from "axios";
 
 class cityPosts {
-  static Posts(city_id) {
-    let request = axios.get(`http://localhost:4000/api/cities/:city_id/posts`);
+  static findPosts(cityId) {
+    let request = axios.get(`http://localhost:4000/api/cities/${cityId}/posts`);
     return request;
   }
 }
