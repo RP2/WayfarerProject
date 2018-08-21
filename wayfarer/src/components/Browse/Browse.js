@@ -11,7 +11,7 @@ import Tokyo from "../../images/tokyo.jpg";
 class Browse extends Component {
     state = {
         posts: [],
-        city: '',
+        city: null,
     }
 
     componentDidMount() {
@@ -33,11 +33,12 @@ class Browse extends Component {
         })
     };
 
-    citySelect(event) {
-        this.setState({city: event.target.id})
+    citySelect = (event) => {
+        console.log(event.target.id);
+        this.setState({city: event.target.id});
     }
 
-    showPostPage(post_id){
+    showPostPage = (post_id) => {
         console.log(post_id)
     }
 
@@ -53,21 +54,17 @@ class Browse extends Component {
                 <div className="cities-column">
                 <h2>Cities</h2>
                 <ul id="cities">
-                    <li id="Paris" onClick={this.citySelect}>
-                        <img src={Paris} alt="img"/>
-                        <h5>Paris</h5>
+                    <li onClick={this.citySelect}>
+                        <img id="Paris" src={Paris} alt="img"/>
                     </li>
-                    <li id="Tokyo" onClick={this.citySelect}>
-                    <img src={Tokyo} alt="img"/>
-                        <h5>Tokyo</h5>
+                    <li onClick={this.citySelect}>
+                    <img id="Tokyo" src={Tokyo} alt="img"/>
                     </li>
-                    <li id="London" onClick={this.citySelect}> 
-                    <img src={London} alt="img"/>
-                        <h5>London</h5>
+                    <li onClick={this.citySelect}> 
+                    <img id="London" src={London} alt="img"/>
                     </li>
-                    <li id="San Francisco" onClick={this.citySelect}>
-                    <img src={SF} alt="img"/>
-                        <h5>San Francisco</h5>
+                    <li onClick={this.citySelect}>
+                    <img id="San Francisco" src={SF} alt="img"/>
                     </li>
                 </ul>  
             </div>
