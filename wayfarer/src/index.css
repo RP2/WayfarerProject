@@ -31,6 +31,7 @@ h1 {
   top: 100%;
   left: 40%;
   color: white;
+  max-width: 20px
 }
 
 .slide-arrow-right {
@@ -38,6 +39,7 @@ h1 {
   top: 93%;
   right: -60%;
   color: white;
+  max-width: 20px;
 }
 
 .carousel {
