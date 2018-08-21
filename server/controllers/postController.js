@@ -34,11 +34,12 @@ function detail(req, res) {
 }
 
 const cityPosts = (req, res) => {
-  db.City.find({}, function(err, foundCities) {
+  console.log(req.params.city_id);
+  db.Post.find({ city: req.params.city_id }, function(err, foundCities) {
     if (err) {
       console.log("error", err);
     }
-    return foundCities;
+    res.json(foundCities);
   });
 
   // foundCities.map(post, index => {
