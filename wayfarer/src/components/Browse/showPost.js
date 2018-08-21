@@ -1,18 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 class ShowPost extends Component {
-    
-    componentDidMount() {
-        
-    }
+  componentDidMount() {}
 
-    render() {
-        return (
-            <div>
-                <h3></h3>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <h3 />
+      </div>
+    );
+  }
 }
 
 export default ShowPost;
