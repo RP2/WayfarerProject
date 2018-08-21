@@ -34,12 +34,26 @@ function detail(req, res) {
 }
 
 const cityPosts = (req, res) => {
-  db.Post.find({ city: req.params.city_id }, (err, foundPosts) => {
+  db.City.find({}, function(err, foundCities) {
     if (err) {
-      console.log("error from city Posts: ", err);
+      console.log("error", err);
     }
-    res.json(foundPosts);
+    return foundCities;
   });
+
+  // foundCities.map(post, index => {
+  //   let desiredCities = []
+  //   if(post.city === _id)
+  // })
+
+  // db.Post.find({ city: req.params.id })
+  //   .populate("city")
+  //   .exec((err, foundPosts) => {
+  //     if (err) {
+  //       console.log("error from city Posts: ", err);
+  //     }
+  //     return(foundPosts);
+  //   });
 };
 
 module.exports = {

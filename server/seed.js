@@ -6,33 +6,41 @@ var city_list = [
   {
     name: "London",
     country: "UK",
+    image_url:
+      "https://cdn.londonandpartners.com/-/media/images/london/visit/london-organisations/tower-bridge-exhibition/tower-bridge-homepage-image.jpg?mw=1920&hash=E19E0136A57855A8ED61B4E66EA72F1646CA8DAC"
   },
+
   {
     name: "Paris",
     country: "France",
+    image_url:
+      "https://photos.mandarinoriental.com/is/image/MandarinOriental/paris-2017-home?wid=2880&hei=1280&fmt=jpeg&crop=9,336,2699,1200&anchor=1358,936&qlt=75,0&fit=wrap&op_sharpen=0&resMode=sharp2&op_usm=0,0,0,0&iccEmbed=0&printRes=72"
   },
   {
     name: "Tokyo",
     country: "Japan",
+    image_url: "https://www.japan-guide.com/thumb/XYZeXYZe3009_375.jpg"
   },
   {
     name: "San Francisco",
     country: "USA",
+    image_url:
+      "http://baycityguide.com/media/00P0B00000uwaF6UAI/Skyline-Downtown-Close-up-1500.jpg"
   }
-]
+];
 
 var user = {
   name: "John Doe",
   city: "San Francisco",
   username: "jdoe",
-  password: '1234',
-  posts: [],
-}
+  password: "1234",
+  posts: []
+};
 
 var post = {
   title: "Test Post Two",
-  text: "This is the text for Post Two...",
-}
+  text: "This is the text for Post Two..."
+};
 
 // db.Post.create({title: 'Post One', text: 'Text for Post One...'}, (err, newPost) => {
 //   if (err) throw err;
@@ -53,7 +61,7 @@ var post = {
 //         if (err) throw err;
 //         db.Post.remove({}, (err, removedPosts) => {
 //           if(err) throw err;
-          
+
 //           // newPost.user = newUser._id;
 //           // newPost.city = newCity._id;
 //           // newPost.save();
@@ -77,16 +85,23 @@ db.Post.remove({}, (err, removedPosts) => {
         if (err) throw err;
         db.User.create(user, (err, newUser) => {
           if (err) throw err;
-          db.Post.create({title: 'Test Post 4', text: 'Some text...', user: newUser._id, city: newCity[3]._id}, (err, newPost) => {
-            if (err) throw err;
-            process.exit();
-          });
-        })
-      })
-    })
-  })
-})
-
+          db.Post.create(
+            {
+              title: "Test Post 4",
+              text: "Some text...",
+              user: newUser._id,
+              city: newCity[3]._id
+            },
+            (err, newPost) => {
+              if (err) throw err;
+              process.exit();
+            }
+          );
+        });
+      });
+    });
+  });
+});
 
 // var post_list = [
 //   {
