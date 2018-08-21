@@ -6,7 +6,10 @@ import CityView from "./CityView";
 class Browse extends Component {
   state = {
     cities: [],
-    cityId: null
+    cityId: null,
+    cityName: null,
+    cityCountry: null,
+    cityImage: null,
   };
 
   componentDidMount() {
@@ -20,8 +23,13 @@ class Browse extends Component {
   }
 
   citySelect = event => {
-    console.log(event.target.id);
-    this.setState({ cityId: event.target.id });
+    console.log(event.target.country);
+    this.setState({ 
+        cityId: event.target.id,
+        cityName: event.target.dataset.name,
+        cityCountry: event.target.dataset.country,
+        cityImage: event.target.src,
+    });
   };
 
   showPostPage = post_id => {
@@ -38,12 +46,14 @@ class Browse extends Component {
             onClick={this.citySelect}
             id={city._id}
             src={city.image_url}
+            data-name={city.name}
+            data-country={city.country}
             alt="img"
           />
         </li>
       );
     });
-
+    console.log(this.state.cityCountry);
     return (
       <div className="browse">
         <h2>Browse</h2>
@@ -56,7 +66,11 @@ class Browse extends Component {
           <Link to="/createpost">CreatePost</Link>
         </p>
 
-        <CityView className="cityview" cityId={this.state.cityId} />
+        <CityView className="cityview" 
+        cityId={this.state.cityId}
+        cityName={this.state.cityName}
+        cityCountry={this.state.cityCountry}
+        cityImage={this.state.cityImage} />
       </div>
     );
   }
