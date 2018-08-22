@@ -10,16 +10,28 @@ function index(req, res) {
 }
 
 function create(req, res) {
-  db.Post.findById(req.params.post_id, function(err, foundPost) {
+  db.Post.create(req.body, (err, newPost) => {
     if (err) {
-      console.log("error", err);
+      console.log("Error from create post:", err);
     }
-    var newPost = new db.Post(req.body);
-    foundPost.posts.push(newPost);
-    foundPost.save(function(err, savedPost) {
-      res.json(newPost);
-    });
+    // newPost.save();
+    console.log("NEWPOST: ", newPost);
+    res.json(newPost);
   });
+
+  // db.Post.findById(req.params.post_id, function(err, foundPost) {
+  //   if (err) {
+  //     console.log("error", err);
+  //   }
+  //   var newPost = new db.Post(req.body);
+  //   foundPost.posts.push(newPost);
+  //   foundPost.save(function(err, savedPost) {
+  //     if (err) {
+  //       console.log(err);
+  //     }
+  //     res.json(newPost);
+  //   });
+  // });
 }
 
 function detail(req, res) {

@@ -1,9 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import London from "../../images/london.jpg";
-// import Paris from "../../images/paris.jpg";
-// import SF from "../../images/sf.jpg";
-// import Tokyo from "../../images/tokyo.jpg";
 import Model from "../../model/cityPosts";
 // import FindCityId from "../../model/findCityId";
 

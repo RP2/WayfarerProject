@@ -1,17 +1,12 @@
 import axios from "axios";
 
 class createPost {
-  static create(username) {
+  static create(user) {
     let request = axios.post(
-      `http://localhost:4000/api/users/${username}/post`,
-      {
-        user: username,
-        title: title,
-        text: text,
-        city: city,
-        img: img
-      }
+      `http://localhost:4000/api/users/${user.userId}/post`,
+      user
     );
+    console.log(request);
     return request;
   }
 }
