@@ -20,7 +20,7 @@ class CreatePost extends Component {
                 </select>
                 <input type="text" placeholder="Title"/>
                 <input type="textfield" placeholder="Description"/>
-                <input type="file" name="pic" accept=".png, .jpg"></input>
+                <input type="text" placeholder="image link" />
                 <input type="submit" value="Submit" />
             </form>
             </div>
