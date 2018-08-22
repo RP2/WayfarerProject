@@ -4,6 +4,14 @@ body {
   font-family: sans-serif;
 }
 
+ul {
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 0px;
+}
+
 li {
   list-style-type: none;
 }
@@ -83,26 +91,44 @@ h1 {
   float: left;
 }
 
+.cities-column {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#cityView {
+  width: 50vw;
+}
+
+#cityView img {
+  width: 100%;
+}
+
+#cities {
+  width: 50vw;
+}
+
 #cities li {
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
-  border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
   margin: 2rem 1rem;
   width: 80%;
 }
 
-.cities-column {
-  background-color: gray;
-  width: 40%;
-  height: 90%;
-}
-
 #cities img {
   height: 100px;
-  width: 120px;
+  width: 100%;
+}
+
+#posts {
+  border: solid black;
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+}
+
+#posts p {
+  padding: 5px;
 }
