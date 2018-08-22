@@ -38,6 +38,7 @@ app.get("/api/posts/:post_id", controllers.post.detail);
 // create posts
 
 // delete routes
+app.delete("/api/posts/:post_id", controllers.post.destroy);
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
 app.listen(process.env.PORT || 4000, () => {

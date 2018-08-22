@@ -81,8 +81,8 @@ class CreatePost extends Component {
             <option ref="London" value="London">
               London
             </option>
-            <option ref="France" value="France">
-              France
+            <option ref="Paris" value="Paris">
+              Paris
             </option>
             <option ref="Tokyo" value="Tokyo">
               Tokyo
