@@ -29,7 +29,7 @@ class CityView extends Component {
     let posts = this.state.posts
       ? this.state.posts.map(post => {
           return (
-            <li key={post._id}>
+            <li id="posts" key={post._id}>
               <p>{post.title}</p>
               <p>{post.text}</p>
               <p>{post.user}</p>
@@ -39,7 +39,7 @@ class CityView extends Component {
       : "";
 
     return (
-      <div>
+      <div id="cityView">
         <h2>City Posts View</h2>
         <p>{this.props.cityName}</p>
         <p>{this.props.cityCountry}</p>

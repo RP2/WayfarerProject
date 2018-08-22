@@ -58,19 +58,15 @@ class Browse extends Component {
       <div className="browse">
         <h2>Browse</h2>
         <div className="cities-column">
-          <h2>Cities</h2>
           <ul id="cities">{cities}</ul>
-        </div>
-
-        <p>
-          <Link to="/createpost">CreatePost</Link>
-        </p>
-
+        
         <CityView className="cityview" 
         cityId={this.state.cityId}
         cityName={this.state.cityName}
         cityCountry={this.state.cityCountry}
         cityImage={this.state.cityImage} />
+        </div>
+         <p><Link to="/createpost">CreatePost</Link></p>
       </div>
     );
   }
