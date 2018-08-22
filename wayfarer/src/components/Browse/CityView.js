@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Model from "../../model/cityPosts";
+import Delete from "../../model/deletePost";
 // import FindCityId from "../../model/findCityId";
 
 class CityView extends Component {
   state = {
     posts: [],
-    city: []
+    city: [],
+    deleted: []
   };
 
   componentDidUpdate = (prevProps, prevState) => {
@@ -19,8 +21,18 @@ class CityView extends Component {
     console.log(this.state);
   };
 
+  delete = event => {
+    console.log("post_id", event.target.value);
+    Delete.delete(event.target.value).then(res => {
+      this.setState({
+        deleted: this.state.deleted.push(res)
+      });
+    });
+  };
+
   render() {
     console.log("CityView State = ", this.state.posts);
+    let userId = localStorage.getItem("userId");
 
     let posts = this.state.posts
       ? this.state.posts.map(post => {
@@ -29,6 +41,13 @@ class CityView extends Component {
               <p>{post.title}</p>
               <p>{post.text}</p>
               <p>{post.user}</p>
+              <p>
+                {userId === post.user ? (
+                  <button onClick={this.delete} value={post._id}>
+                    Delete
+                  </button>
+                ) : null}
+              </p>
             </li>
           );
         })

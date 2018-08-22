@@ -45,6 +45,16 @@ function detail(req, res) {
   });
 }
 
+function destroy(req, res) {
+  db.Post.findByIdAndRemove(req.params.post_id, function(err, deletedPost) {
+    if (err) {
+      console.log("userController.update error", err);
+    }
+    console.log("Post Deleted: ", deletedPost);
+    res.status(200).json(deletedPost);
+  });
+}
+
 const cityPosts = (req, res) => {
   console.log(req.params.city_id);
   db.Post.find({ city: req.params.city_id }, function(err, foundCities) {
@@ -73,5 +83,6 @@ module.exports = {
   index: index,
   create: create,
   detail: detail,
-  cityPosts: cityPosts
+  cityPosts: cityPosts,
+  destroy: destroy
 };
