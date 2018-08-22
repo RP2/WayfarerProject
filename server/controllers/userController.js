@@ -12,7 +12,7 @@ function index(req, res) {
 }
 //login function
 function login(req, res) {
-  console.log("req.body", req.body);
+  // console.log("req.body", req.body);
   db.User.findOne(
     { username: req.body.username, password: req.body.password },
     function(err, foundUser) {
@@ -33,7 +33,7 @@ function login(req, res) {
 }
 // POST /api/user
 function signup(req, res) {
-  console.log("signup req.body", req.body);
+  // console.log("signup req.body", req.body);
   // create a user based on request body and send it back as JSON
   db.User.create(req.body, function(err, user) {
     if (err) {
@@ -67,12 +67,15 @@ function updateProfile(req, res) {
 }
 
 function destroy(req, res) {
-  db.User.findByIdAndRemove({username: req.params.user_id}, function(err, foundUser){
+  db.User.findByIdAndRemove({ username: req.params.user_id }, function(
+    err,
+    foundUser
+  ) {
     if (err) {
       console.log("userController.update error", err);
     }
     res.status(200).json(foundUser);
-  })
+  });
 }
 
 module.exports = {
@@ -81,5 +84,5 @@ module.exports = {
   signup: signup,
   profile: profile,
   updateProfile: updateProfile,
-  destroy: destroy,
+  destroy: destroy
 };

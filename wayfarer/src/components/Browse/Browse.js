@@ -9,7 +9,7 @@ class Browse extends Component {
     cityId: null,
     cityName: null,
     cityCountry: null,
-    cityImage: null,
+    cityImage: null
   };
 
   componentDidMount() {
@@ -24,11 +24,11 @@ class Browse extends Component {
 
   citySelect = event => {
     console.log(event.target.country);
-    this.setState({ 
-        cityId: event.target.id,
-        cityName: event.target.dataset.name,
-        cityCountry: event.target.dataset.country,
-        cityImage: event.target.src,
+    this.setState({
+      cityId: event.target.id,
+      cityName: event.target.dataset.name,
+      cityCountry: event.target.dataset.country,
+      cityImage: event.target.src
     });
   };
 
@@ -59,14 +59,18 @@ class Browse extends Component {
         <h2>Browse</h2>
         <div className="cities-column">
           <ul id="cities">{cities}</ul>
-        
-        <CityView className="cityview" 
-        cityId={this.state.cityId}
-        cityName={this.state.cityName}
-        cityCountry={this.state.cityCountry}
-        cityImage={this.state.cityImage} />
+
+          <CityView
+            className="cityview"
+            cityId={this.state.cityId}
+            cityName={this.state.cityName}
+            cityCountry={this.state.cityCountry}
+            cityImage={this.state.cityImage}
+          />
         </div>
-         <p><Link to="/createpost">CreatePost</Link></p>
+        <p>
+          <Link to="/createpost">CreatePost</Link>
+        </p>
       </div>
     );
   }
