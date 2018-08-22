@@ -35,13 +35,23 @@ function login(req, res) {
 function signup(req, res) {
   // console.log("signup req.body", req.body);
   // create a user based on request body and send it back as JSON
-  db.User.create(req.body, function(err, user) {
+  db.User.findOne({ username: req.body.username }, (err, foundUser) => {
     if (err) {
-      console.log("error", err);
+      console.log(err);
+    } else if (foundUser) {
+      console.log("User Already Exists:", foundUser);
+      res.status(400).send("User Already Exists");
+    } else {
+      db.User.create(req.body, function(err, user) {
+        if (err) {
+          console.log("error", err);
+        }
+        res.status(200).json(user);
+      });
     }
-    res.status(200).json(user);
   });
 }
+
 // user profile
 function profile(req, res) {
   db.User.findOne({ username: req.params.user_id }, function(err, foundUser) {
