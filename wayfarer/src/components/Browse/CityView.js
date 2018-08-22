@@ -10,7 +10,7 @@ import Model from "../../model/cityPosts";
 class CityView extends Component {
   state = {
     posts: [],
-    city: [],
+    city: []
   };
 
   componentDidUpdate = (prevProps, prevState) => {
@@ -20,21 +20,23 @@ class CityView extends Component {
         this.setState({ posts: res.data })
       );
     }
-    console.log(this.state)
+    console.log(this.state);
   };
 
   render() {
     console.log("CityView State = ", this.state.posts);
 
-    let posts = this.state.posts ? this.state.posts.map(post => {
-      return (
-        <li key={post._id}>
-          <p>{post.title}</p>
-          <p>{post.text}</p>
-          <p>{post.user}</p>
-        </li>
-      );
-    }) : "";
+    let posts = this.state.posts
+      ? this.state.posts.map(post => {
+          return (
+            <li key={post._id}>
+              <p>{post.title}</p>
+              <p>{post.text}</p>
+              <p>{post.user}</p>
+            </li>
+          );
+        })
+      : "";
 
     return (
       <div>
@@ -42,9 +44,7 @@ class CityView extends Component {
         <p>{this.props.cityName}</p>
         <p>{this.props.cityCountry}</p>
         <img src={this.props.cityImage} />
-        <ul>
-          {posts}
-        </ul>
+        <ul>{posts}</ul>
       </div>
     );
   }
